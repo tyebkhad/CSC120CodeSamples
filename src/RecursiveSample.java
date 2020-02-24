@@ -41,7 +41,7 @@ class RecursiveSample {
 	}
 	/**
 	 * recursive sort
-	 * if list is empty return null
+	 * if list is empty return
 	 * move min to front then sort rest
 	 */
 }
