@@ -22,7 +22,8 @@ public class GetAllFiveCardHands {
         letters.add('a');
         letters.add('b');
         letters.add('c');
-        getCombos(letters, 2);
+        letters.add('d');
+        System.out.println(getCombos(letters, 2));
     }
 
     public static ArrayList<ArrayList<Character>> getCombos(ArrayList<Character> letters, int length){
@@ -32,16 +33,36 @@ public class GetAllFiveCardHands {
             return toReturn;
         }
         if(length == 1){
-            return createListsFromElements();
+            return createListsFromElements(letters);
         }
         char first = letters.get(0);
         ArrayList<Character> others = new ArrayList<Character>(letters.subList(1, letters.size()));
         ArrayList<ArrayList<Character>> combosWithoutFirst = getCombos(others, length);
         ArrayList<ArrayList<Character>> shortCombos = getCombos(others, length-1);
-        ArrayList<ArrayList<Character>> combosWithFirst = new ArrayList<ArrayList<Character>>();
+        ArrayList<ArrayList<Character>> combosWithFirst = addFirst(letters.get(0), shortCombos);
+
+        ArrayList<ArrayList<Character>> allCombos = new ArrayList<ArrayList<Character>>();
+        allCombos.addAll(combosWithFirst);
+        allCombos.addAll(combosWithoutFirst);
+        return allCombos;
     }
 
-    public static ArrayList<ArrayList<Character>> createListsFromElements(ArrayList<Character>){
-        ArrayList<Arra>
+    public static ArrayList<ArrayList<Character>> createListsFromElements(ArrayList<Character> list){
+        ArrayList<ArrayList<Character>> listedElems = new ArrayList<ArrayList<Character>>();
+        for(char c : list){
+            ArrayList<Character> toAdd = new ArrayList<Character>();
+            toAdd.add(c);
+            listedElems.add(toAdd);
+        }
+        return listedElems;
+    }
+
+    public static ArrayList<ArrayList<Character>> addFirst(char toAdd, ArrayList<ArrayList<Character>> list){
+        ArrayList<ArrayList<Character>> toReturn = new ArrayList<ArrayList<Character>>();
+        for(ArrayList<Character> a : list){
+            a.add(0, toAdd);
+            toReturn.add(a);
+        }
+        return toReturn;
     }
 }
