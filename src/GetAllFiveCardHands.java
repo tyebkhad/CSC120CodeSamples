@@ -39,7 +39,7 @@ public class GetAllFiveCardHands {
         ArrayList<Character> others = new ArrayList<Character>(letters.subList(1, letters.size()));
         ArrayList<ArrayList<Character>> combosWithoutFirst = getCombos(others, length);
         ArrayList<ArrayList<Character>> shortCombos = getCombos(others, length-1);
-        ArrayList<ArrayList<Character>> combosWithFirst = addFirst(letters.get(0), shortCombos);
+        ArrayList<ArrayList<Character>> combosWithFirst = addFirst(first, shortCombos);
 
         ArrayList<ArrayList<Character>> allCombos = new ArrayList<ArrayList<Character>>();
         allCombos.addAll(combosWithFirst);
