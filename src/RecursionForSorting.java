@@ -19,6 +19,8 @@ public class RecursionForSorting {
      *      1) recursively sort all but the first element
      *      2) insert the first element into the sorted list
      *      runtime O(n^2)
+     *
+     * Instrumenting --> putting trackers in code (ie comparisons in sort methods)
      */
 
     public static void main(String[] args) {
